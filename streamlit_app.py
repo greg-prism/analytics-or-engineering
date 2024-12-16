@@ -13,8 +13,7 @@ def validate(response):
 
 st.title("Engineering or Analytics?")
 
-print(
-    'Please answer the following questions chossing a number from 1-5 \nwith 1 being strongly disagree with 5 being strongly agree\n\n')
+print('Please answer the following questions chossing a number from 1-5 \nwith 1 being strongly disagree with 5 being strongly agree\n\n')
 
 # 1 - Engineering
 r1 = st.selectbox('I enjoy building systems and processes', [1, 2, 3, 4, 5])
