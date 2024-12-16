@@ -13,7 +13,7 @@ def validate(response):
 
 st.title("Engineering or Analytics?")
 st.header("""This quiz is designed to find which aspects of data you most *enjoy* to see which field your interests most closely align with""")
-st.subheader(""""Please answer the following questions chossing a number from 1-5 with 1 being strongly disagree with 5 being strongly agree""")
+st.subheader("""Please answer the following questions chossing a number from 1-5 with 1 being strongly disagree with 5 being strongly agree""")
 
 print('Please answer the following questions chossing a number from 1-5 \nwith 1 being strongly disagree with 5 being strongly agree\n\n')
 
