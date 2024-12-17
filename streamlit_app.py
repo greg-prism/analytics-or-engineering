@@ -30,9 +30,9 @@ r7 = st.radio("I would prefer to focus on the data itself, looking for opportuni
                   [1, 2, 3, 4, 5])
 
 # 8 - Data Science
-r8 = st.radio(
-    "I would prefer to focus on what the data will say in the future, creating hypotheses and testing them",
-    [1, 2, 3, 4, 5])
+# r8 = st.radio(
+#     "I would prefer to focus on what the data will say in the future, creating hypotheses and testing them",
+#     [1, 2, 3, 4, 5])
 
 # 9 - Engineering
 r9 = st.radio(
@@ -58,7 +58,7 @@ skills = ['Software Engineering', 'Pipeline Orchestration', 'Testing & Monitorin
 
 analyst = [1, 1, 1, 2, 2, 5, 5, 5, 4, 3, 2, 1]
 analytics_engineer = [3, 4, 5, 4, 3, 4, 3, 2, 1, 3, 3]
-data_engineer = [4, 5, 5, 5, 5, 2, 2, 3, 3, 3, 4]
+data_engineer = [4, 5, 5, 5, 5, 3, 2, 2, 3, 3, 4]
 data_scientist = [5, 3, 3, 3, 3, 5, 5, 5, 5, 5, 5]
 
 fig2 = go.Figure(data=go.Scatterpolar(
