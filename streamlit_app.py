@@ -1,21 +1,11 @@
 import streamlit as st
 import plotly.graph_objects as go
-
-
-def validate(response):
-    if (response in ['1', '2', '3', '4', '5']) and (response != None):
-        return int(response)
-    else:
-        print(f"Error: Cannot accept {response} please choose a number between 1 and 5")
-        response_new = input()
-        validate(response_new)
-
+import plotly.express as px
+import pandas as pd
 
 st.title("Engineering or Analytics?")
 st.header("""This quiz is designed to find which aspects of data you most *enjoy* to see which field your interests most closely align with""")
 st.subheader("""Please answer the following questions chossing a number from 1-5 with 1 being strongly disagree with 5 being strongly agree""")
-
-print('Please answer the following questions chossing a number from 1-5 \nwith 1 being strongly disagree with 5 being strongly agree\n\n')
 
 # 1 - Engineering
 r1 = st.selectbox('I enjoy building systems and processes', [1, 2, 3, 4, 5])
@@ -52,29 +42,65 @@ r9 = st.selectbox(
 respondent = [r1,r2,r3,r4,r5,r6,r7,r8,r9]
 analytical_score = r2+r4+r5+r7
 engineering_score = r1+r3+r6+r9
-ds_score = r2+r3+r4+r6+r8
+# ds_score = r2+r3+r4+r6+r8
 
-analyst_score_av = round((analytical_score/4))
-engineer_score_av = round((engineering_score/4))
-ds_score_av = round((ds_score/5), 2)
+analyst_score_av = round((analytical_score/4),2)
+engineer_score_av = round((engineering_score/4),2)
+# ds_score_av = round((ds_score/5), 2)
+respondent_scores = {'Track':['Analyst','Engineer'],'Score':[analyst_score_av, engineer_score_av]} #,ds_score_av]
+fig = px.bar(respondent_scores, x='Track', y='Score',color='Track')
+fig.show()
 
-respondent_scores = [analyst_score_av,engineer_score_av,ds_score_av]
+
+skills = ['Software Engineering', 'Pipeline Orchestration', 'Testing & Monitoring', 'Data Architecture', 'Databases', 'Data Visualisation', 
+           'Reporting', 'Data Storytelling', 'Statistics', 'Machine Learning', 'Automation', 'Software Engineering']
+
+analyst = [1, 1, 1, 2, 2, 5, 5, 5, 3, 2, 2, 1]
+analytics_engineer = [3, 4, 5, 4, 3, 4, 3, 2, 1, 3, 3]
+data_engineer = [5, 5, 5, 5, 5, 3, 3, 3, 3, 3, 5]
+data_scientist = [5, 3, 3, 3, 3, 5, 5, 5, 5, 5, 5]
+
+fig2 = go.Figure(data=go.Scatterpolar(
+      r=analyst,
+      theta=skills,
+      fill='toself',
+      name='Data Analyst'
+))
+
+# fig.add_trace(go.Scatterpolar(
+#       r=analytics_engineer,
+#       theta=skills,
+#       fill='toself',
+#       name='Analytics Engineer'
+# ))
+fig2.add_trace(go.Scatterpolar(
+      r=data_engineer,
+      theta=skills,
+      fill='toself',
+      name='Data Engineer'
+))
+
+fig2.show()
 
 # print(f"You are {percent_analyst}% analyst, {percent_engineer}% engineer and  {percent_ds}% data scientist!")
 
-layout = go.Layout(
-    title = 'Overview',
-    xaxis = go.XAxis(
-        showticklabels=False),
-)
+# layout = go.Layout(
+#     title = 'Overview',
+#     xaxis = go.XAxis(
+#         showticklabels=False),
+# )
 
-fig = go.Figure(data=go.Scatterpolar(
-      r=respondent_scores,
-      theta=['Analytics','Engineering','Data Science'],
-      fill='toself',
-      name='Data Analyst',
-))
+# fig = go.Figure(data=go.Scatterpolar(
+#       r=respondent_scores,
+#       theta=['Analytics','Engineering','Data Science'],
+#       fill='toself',
+#       name='Data Analyst',
+# ))
 
-fig.update_polars(radialaxis=dict(range=[1, 5]))
 
-st.plotly_chart(fig, use_container_width=True)
+# fig.update_polars(radialaxis=dict(range=[1, 5]))
+
+# st.plotly_chart(fig, use_container_width=True)
+
+
+
