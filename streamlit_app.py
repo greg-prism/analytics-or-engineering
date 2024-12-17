@@ -39,7 +39,7 @@ r9 = st.radio(
     "I would prefer to focus on the collection and storage of data, thinking how the business can leverage this to drive value",
     [1, 2, 3, 4, 5])
 
-respondent = [r1,r2,r3,r4,r5,r6,r7,r8,r9]
+respondent = [r1,r2,r3,r4,r5,r6,r7,r9] #r8
 analytical_score = r2+r4+r5+r7
 engineering_score = r1+r3+r6+r9
 # ds_score = r2+r3+r4+r6+r8
